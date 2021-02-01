@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Kramse</Name>
-    <LastWriteTime>2021-01-31T17:48:18.9792955Z</LastWriteTime>
+    <LastWriteTime>2021-02-01T12:12:02.9225334Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>1. Files to Staging Area.dtsx</Name>
-      <LastWriteTime>2021-01-31T17:40:13.9375145Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T11:52:22.0241992Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -18,12 +18,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>3. PSA Dim to ODS.dtsx</Name>
-      <LastWriteTime>2021-01-31T17:36:46.4112274Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T12:36:32.5547413Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>0. Project Kramse.dtsx</Name>
-      <LastWriteTime>2021-01-31T17:48:03.295046Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T12:31:54.6129353Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>4. PSA Facts to ODS.dtsx</Name>
+      <LastWriteTime>2021-02-01T12:50:10.6516312Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

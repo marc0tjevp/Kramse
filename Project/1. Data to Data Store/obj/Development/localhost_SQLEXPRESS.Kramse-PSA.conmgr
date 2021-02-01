@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="localhost_SQLEXPRESS Kramse-PSA"
   DTS:DTSID="{D87E17F1-D27D-4EE4-9566-C223360448B2}"

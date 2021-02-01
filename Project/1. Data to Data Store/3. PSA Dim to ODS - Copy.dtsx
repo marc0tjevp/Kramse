@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{C0AD1D39-7C2E-40F8-B8C3-2EF1FAAAC79E}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{5F0BF5AF-3F05-48ED-8C93-F5D6DA26D89F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -6030,6 +6030,11 @@
                       lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[Order]"
                       name="Order" />
                     <outputColumn
+                      refId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
+                      name="EXTRACTION_DATE" />
+                    <outputColumn
                       refId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -6041,11 +6046,6 @@
                       lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
-                    <outputColumn
-                      refId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
-                      name="EXTRACTION_DATE" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -6240,7 +6240,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Country], [DistanceFromOslo], [DistanceFromPiraeus], [Id], [Name], [Order] FROM [dbo].[Port]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Country], [DistanceFromOslo], [DistanceFromPiraeus], [EXTRACTION_DATE], [Id], [Name], [Order] FROM [dbo].[Port]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -6329,6 +6329,19 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[EXTRACTION_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EXTRACTION_DATE"
+                      externalMetadataColumnId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EXTRACTION_DATE]"
+                      lineageId="Package\Port -&gt; ODS\Extract Port from PSA.Outputs[OLE DB Source Output].Columns[EXTRACTION_DATE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Id]"
                       cachedDataType="i4"
                       cachedName="Id"
@@ -6384,6 +6397,10 @@
                       refId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DistanceFromPiraeus]"
                       dataType="i4"
                       name="DistanceFromPiraeus" />
+                    <externalMetadataColumn
+                      refId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EXTRACTION_DATE]"
+                      dataType="dbTimeStamp"
+                      name="EXTRACTION_DATE" />
                     <externalMetadataColumn
                       refId="Package\Port -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Id]"
                       dataType="i4"
@@ -7847,851 +7864,7 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Voyage -&gt; ODS"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{E07CD7B1-E370-451F-948C-08484EFE8741}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Voyage -&gt; ODS"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="Extract Voyage from PSA"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Voyage]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Connections[OleDbConnection]"
-                  connectionManagerID="{D87E17F1-D27D-4EE4-9566-C223360448B2}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost_SQLEXPRESS Kramse-PSA]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[Id]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]"
-                      name="Id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[ShipId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[ShipId]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[ShipId]"
-                      name="ShipId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[DateDepartVoyage]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]"
-                      name="DateDepartVoyage"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[DateDepartVoyage_Key]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]"
-                      name="DateDepartVoyage_Key"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdStart]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[PortIdStart]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdStart]"
-                      name="PortIdStart"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdEnd]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[PortIdEnd]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdEnd]"
-                      name="PortIdEnd"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[EXTRACTION_DATE]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[EXTRACTION_DATE]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[EXTRACTION_DATE]"
-                      name="EXTRACTION_DATE"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[Id]"
-                      dataType="i4"
-                      name="Id" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[ShipId]"
-                      dataType="i4"
-                      name="ShipId" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[DateDepartVoyage]"
-                      dataType="dbDate"
-                      name="DateDepartVoyage" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[DateDepartVoyage_Key]"
-                      dataType="i4"
-                      name="DateDepartVoyage_Key" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[PortIdStart]"
-                      dataType="i4"
-                      name="PortIdStart" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[PortIdEnd]"
-                      dataType="i4"
-                      name="PortIdEnd" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].ExternalColumns[EXTRACTION_DATE]"
-                      dataType="dbTimeStamp"
-                      name="EXTRACTION_DATE" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[Id]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[Id]"
-                      name="Id" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ShipId]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ShipId]"
-                      name="ShipId" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[DateDepartVoyage]"
-                      dataType="dbDate"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[DateDepartVoyage]"
-                      name="DateDepartVoyage" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[DateDepartVoyage_Key]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[DateDepartVoyage_Key]"
-                      name="DateDepartVoyage_Key" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[PortIdStart]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[PortIdStart]"
-                      name="PortIdStart" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[PortIdEnd]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[PortIdEnd]"
-                      name="PortIdEnd" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Error Output].Columns[EXTRACTION_DATE]"
-                      name="EXTRACTION_DATE" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Voyage -&gt; ODS\Insert Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Insert Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Voyage]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Voyage -&gt; ODS\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{D4499C09-FB49-4941-86B1-AFBB4E737367}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost_SQLEXPRESS.Kramse-ODS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[Id]"
-                      cachedDataType="i4"
-                      cachedName="Id"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[ShipId]"
-                      cachedDataType="i4"
-                      cachedName="ShipId"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipId]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[ShipId]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[DateDepartVoyage]"
-                      cachedDataType="dbDate"
-                      cachedName="DateDepartVoyage"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateDepartVoyage]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[DateDepartVoyage_Key]"
-                      cachedDataType="i4"
-                      cachedName="DateDepartVoyage_Key"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateDepartVoyage_Key]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[PortIdStart]"
-                      cachedDataType="i4"
-                      cachedName="PortIdStart"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdStart]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdStart]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[PortIdEnd]"
-                      cachedDataType="i4"
-                      cachedName="PortIdEnd"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdEnd]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdEnd]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].Columns[EXTRACTION_DATE]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="EXTRACTION_DATE"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EXTRACTION_DATE]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[EXTRACTION_DATE]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      dataType="i4"
-                      name="Id" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipId]"
-                      dataType="i4"
-                      name="ShipId" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateDepartVoyage]"
-                      dataType="dbDate"
-                      name="DateDepartVoyage" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateDepartVoyage_Key]"
-                      dataType="i4"
-                      name="DateDepartVoyage_Key" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdStart]"
-                      dataType="i4"
-                      name="PortIdStart" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdEnd]"
-                      dataType="i4"
-                      name="PortIdEnd" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EXTRACTION_DATE]"
-                      dataType="dbTimeStamp"
-                      name="EXTRACTION_DATE" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Insert Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Voyage -&gt; ODS\OLE DB Command"
-              componentClassID="Microsoft.OLEDBCommand"
-              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="OLE DB Command"
-              usesDispositions="true"
-              version="2">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Voyage] SET [DateDepartVoyage] = ?,[DateDepartVoyage_Key] = ? WHERE [Id] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Voyage -&gt; ODS\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{D4499C09-FB49-4941-86B1-AFBB4E737367}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost_SQLEXPRESS.Kramse-ODS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input]"
-                  errorOrTruncationOperation="Command Execution"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Command Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].Columns[DateDepartVoyage]"
-                      cachedDataType="dbDate"
-                      cachedName="DateDepartVoyage"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].Columns[DateDepartVoyage_Key]"
-                      cachedDataType="i4"
-                      cachedName="DateDepartVoyage_Key"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]" />
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].Columns[Id]"
-                      cachedDataType="i4"
-                      cachedName="Id"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="dbDate"
-                      name="Param_0">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="i4"
-                      name="Param_1">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="i4"
-                      name="Param_2">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Output]"
-                  exclusionGroup="1"
-                  name="OLE DB Command Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Command Error Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Voyage -&gt; ODS\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension"
-              componentClassID="Microsoft.SCD"
-              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
-              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
-              name="Slowly Changing Dimension"
-              version="3">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SELECT statement used to create a schema rowset."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [DateDepartVoyage], [DateDepartVoyage_Key], [Id], [PortIdEnd], [PortIdStart], [ShipId] FROM [dbo].[Voyage]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere"></property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                  name="UpdateChangingAttributeHistory">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
-                  name="FailOnFixedAttributeChange">true</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the column name for the inferred member."
-                  name="InferredMemberIndicator"></property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether inferred member updates are detected."
-                  name="EnableInferredMember">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
-                  name="FailOnLookupFailure">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies that all rows in the input are new or the transformation detects the change type."
-                  name="IncomingRowChangeType"
-                  typeConverter="IncomingRowChangeType">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{D4499C09-FB49-4941-86B1-AFBB4E737367}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost_SQLEXPRESS.Kramse-ODS]"
-                  description="Defines the connection to use for lookups in the dimension table"
-                  name="LookupConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
-                  name="Slowly Changing Dimension Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DateDepartVoyage]"
-                      cachedDataType="dbDate"
-                      cachedName="DateDepartVoyage"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateDepartVoyage]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DateDepartVoyage_Key]"
-                      cachedDataType="i4"
-                      cachedName="DateDepartVoyage_Key"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateDepartVoyage_Key]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Id]"
-                      cachedDataType="i4"
-                      cachedName="Id"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Id]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">1</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PortIdEnd]"
-                      cachedDataType="i4"
-                      cachedName="PortIdEnd"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PortIdEnd]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdEnd]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">4</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PortIdStart]"
-                      cachedDataType="i4"
-                      cachedName="PortIdStart"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PortIdStart]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdStart]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">4</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ShipId]"
-                      cachedDataType="i4"
-                      cachedName="ShipId"
-                      externalMetadataColumnId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ShipId]"
-                      lineageId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[ShipId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">4</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateDepartVoyage]"
-                      dataType="dbDate"
-                      name="DateDepartVoyage" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateDepartVoyage_Key]"
-                      dataType="i4"
-                      name="DateDepartVoyage_Key" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Id]"
-                      dataType="i4"
-                      name="Id" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PortIdEnd]"
-                      dataType="i4"
-                      name="PortIdEnd" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PortIdStart]"
-                      dataType="i4"
-                      name="PortIdStart" />
-                    <externalMetadataColumn
-                      refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ShipId]"
-                      dataType="i4"
-                      name="ShipId" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Unchanged Output]"
-                  description="Unchanged rows"
-                  exclusionGroup="1"
-                  name="Unchanged Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[New Output]"
-                  description="New rows"
-                  exclusionGroup="1"
-                  name="New Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
-                  description="Rows with changes in columns tagged FixedAttribute"
-                  exclusionGroup="1"
-                  name="Fixed Attribute Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
-                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
-                  exclusionGroup="1"
-                  name="Changing Attribute Updates Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
-                  description="HistoricalAttribute (Type 2) changes result in these new rows"
-                  exclusionGroup="2"
-                  name="Historical Attribute Inserts Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
-                  description="Information to update unpopulated initial dimension row"
-                  exclusionGroup="1"
-                  name="Inferred Member Updates Output"
-                  synchronousInputId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Voyage -&gt; ODS.Paths[Changing Attribute Updates Output]"
-              endId="Package\Voyage -&gt; ODS\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Changing Attribute Updates Output"
-              startId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
-            <path
-              refId="Package\Voyage -&gt; ODS.Paths[New Output]"
-              endId="Package\Voyage -&gt; ODS\Insert Destination.Inputs[OLE DB Destination Input]"
-              name="New Output"
-              startId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Outputs[New Output]" />
-            <path
-              refId="Package\Voyage -&gt; ODS.Paths[OLE DB Source Output]"
-              endId="Package\Voyage -&gt; ODS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
-              name="OLE DB Source Output"
-              startId="Package\Voyage -&gt; ODS\Extract Voyage from PSA.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{8FA85303-97C0-485C-83E3-F66E1F9B7397}"
-      DTS:From="Package\Date -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\Container -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{48BACA17-3F14-43BC-9A6F-793AC1C043F0}"
-      DTS:From="Package\Date -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Port -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{BBFA3445-628C-46F6-8E5E-7224968C262A}"
-      DTS:From="Package\Date -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Item -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{30391EAA-25B0-4940-889D-7483CEEC346B}"
-      DTS:From="Package\Date -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Consignor -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{D1B1159B-5479-4022-A5BC-5AC79F05D865}"
-      DTS:From="Package\Date -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Ship -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
-      DTS:CreationName=""
-      DTS:DTSID="{CA3F587C-748C-4E3A-BA48-2A9079C621FF}"
-      DTS:From="Package\Container -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Voyage -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{9C9EA431-5700-464B-953E-1C3F8AF5BF18}"
-      DTS:From="Package\Port -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Voyage -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{BCE0D9D9-A484-4C6D-8B82-48D809B9BE53}"
-      DTS:From="Package\Item -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 7"
-      DTS:To="Package\Voyage -&gt; ODS" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
-      DTS:CreationName=""
-      DTS:DTSID="{5C445DEB-2F5E-483E-BBC6-55D5E3E04D54}"
-      DTS:From="Package\Consignor -&gt; ODS"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 8"
-      DTS:To="Package\Voyage -&gt; ODS" />
-  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -8703,329 +7876,31 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="165,42"
           Id="Package\Consignor -&gt; ODS"
-          TopLeft="627.5,107.5" />
+          TopLeft="469,134" />
         <NodeLayout
           Size="163,42"
           Id="Package\Container -&gt; ODS"
-          TopLeft="5.5,107.5" />
+          TopLeft="65,131" />
         <NodeLayout
           Size="140,42"
           Id="Package\Date -&gt; ODS"
-          TopLeft="427,5.49999999999989" />
+          TopLeft="65,46" />
         <NodeLayout
           Size="140,42"
           Id="Package\Item -&gt; ODS"
-          TopLeft="427,107.5" />
+          TopLeft="426,42" />
         <NodeLayout
           Size="137,42"
           Id="Package\Port -&gt; ODS"
-          TopLeft="229.5,107.5" />
+          TopLeft="245,47" />
         <NodeLayout
           Size="138,42"
           Id="Package\Ship -&gt; ODS"
-          TopLeft="853,107.5" />
-        <NodeLayout
-          Size="153,42"
-          Id="Package\Voyage -&gt; ODS"
-          TopLeft="420.5,209.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="453,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-366,60.0000000000001"
-              Start="0,0"
-              End="-366,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.25"
-                    Point2="0,16.25"
-                    Point3="-4,16.25" />
-                  <mssgle:LineSegment
-                    End="-362,16.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-362,16.25"
-                    Point2="-366,16.25"
-                    Point3="-366,20.25" />
-                  <mssgle:LineSegment
-                    End="-366,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="475,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-177,60.0000000000001"
-              Start="0,0"
-              End="-177,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.406779661017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.406779661017"
-                    Point2="0,24.406779661017"
-                    Point3="-4,24.406779661017" />
-                  <mssgle:LineSegment
-                    End="-173,24.406779661017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-173,24.406779661017"
-                    Point2="-177,24.406779661017"
-                    Point3="-177,28.406779661017" />
-                  <mssgle:LineSegment
-                    End="-177,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="497,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="519,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="191,60"
-              Start="0,0"
-              End="191,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.406779661017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.406779661017"
-                    Point2="0,24.406779661017"
-                    Point3="4,24.406779661017" />
-                  <mssgle:LineSegment
-                    End="187,24.406779661017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="187,24.406779661017"
-                    Point2="191,24.406779661017"
-                    Point3="191,28.406779661017" />
-                  <mssgle:LineSegment
-                    End="191,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="541,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="381,60"
-              Start="0,0"
-              End="381,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.25"
-                    Point2="0,16.25"
-                    Point3="4,16.25" />
-                  <mssgle:LineSegment
-                    End="377,16.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="377,16.25"
-                    Point2="381,16.25"
-                    Point3="381,20.25" />
-                  <mssgle:LineSegment
-                    End="381,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="87,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="366.5,59.9999999999999"
-              Start="0,0"
-              End="366.5,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.917808219178" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.917808219178"
-                    Point2="0,41.917808219178"
-                    Point3="4,41.917808219178" />
-                  <mssgle:LineSegment
-                    End="362.5,41.917808219178" />
-                  <mssgle:CubicBezierSegment
-                    Point1="362.5,41.917808219178"
-                    Point2="366.5,41.917808219178"
-                    Point3="366.5,45.917808219178" />
-                  <mssgle:LineSegment
-                    End="366.5,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="298,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="184.5,59.9999999999999"
-              Start="0,0"
-              End="184.5,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1407942238267" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1407942238267"
-                    Point2="0,33.1407942238267"
-                    Point3="4,33.1407942238267" />
-                  <mssgle:LineSegment
-                    End="180.5,33.1407942238267" />
-                  <mssgle:CubicBezierSegment
-                    Point1="180.5,33.1407942238267"
-                    Point2="184.5,33.1407942238267"
-                    Point3="184.5,37.1407942238267" />
-                  <mssgle:LineSegment
-                    End="184.5,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="497,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.5,60"
-              Start="0,0"
-              End="14.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1407942238267" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1407942238267"
-                    Point2="0,33.1407942238267"
-                    Point3="4,33.1407942238267" />
-                  <mssgle:LineSegment
-                    End="10.5,33.1407942238267" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.5,33.1407942238267"
-                    Point2="14.5,33.1407942238267"
-                    Point3="14.5,37.1407942238267" />
-                  <mssgle:LineSegment
-                    End="14.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="710,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-169.5,60"
-              Start="0,0"
-              End="-169.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.9178082191781" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.9178082191781"
-                    Point2="0,41.9178082191781"
-                    Point3="-4,41.9178082191781" />
-                  <mssgle:LineSegment
-                    End="-165.5,41.9178082191781" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-165.5,41.9178082191781"
-                    Point2="-169.5,41.9178082191781"
-                    Point3="-169.5,45.9178082191781" />
-                  <mssgle:LineSegment
-                    End="-169.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="275,135" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -9157,9 +8032,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9181,9 +8054,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9241,9 +8112,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9265,9 +8134,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9301,9 +8168,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9795,10 +8660,6 @@
           Size="184,42"
           Id="Package\Date -&gt; ODS\Extract Date from PSA"
           TopLeft="18,5.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Date -&gt; ODS\Insert Destination"
-          TopLeft="28.5000000000001,209.5" />
         <EdgeLayout
           Id="Package\Date -&gt; ODS.Paths[OLE DB Source Output]"
           TopLeft="110,47.5">
@@ -9818,11 +8679,13 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Date -&gt; ODS\Insert Destination"
+          TopLeft="28.5000000000001,209.5" />
         <EdgeLayout
           Id="Package\Date -&gt; ODS.Paths[New Output]"
           TopLeft="110,149.5">
@@ -10397,14 +9260,18 @@
         <NodeLayout
           Size="209,42"
           Id="Package\Port -&gt; ODS\Slowly Changing Dimension"
-          TopLeft="212.5,107.5" />
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Port -&gt; ODS\Load Port into ODS"
+          TopLeft="28.5,209.5" />
         <NodeLayout
           Size="181,42"
           Id="Package\Port -&gt; ODS\Extract Port from PSA"
-          TopLeft="226.5,5.5" />
+          TopLeft="19.5,5.5" />
         <EdgeLayout
           Id="Package\Port -&gt; ODS.Paths[OLE DB Source Output]"
-          TopLeft="317,47.5">
+          TopLeft="110,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10421,16 +9288,14 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Port -&gt; ODS\Load Port into ODS"
-          TopLeft="235.5,209.5" />
         <EdgeLayout
           Id="Package\Port -&gt; ODS.Paths[New Output]"
-          TopLeft="318.5,149.5">
+          TopLeft="111.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10488,7 +9353,7 @@
       &lt;IdentificationString&gt;Extract Port from PSA.Outputs[OLE DB Source Output].Columns[EXTRACTION_DATE]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;EXTRACTION_DATE&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Extract Port from PSA.Outputs[OLE DB Source Output].Columns[Id]&lt;/IdentificationString&gt;
@@ -10546,61 +9411,13 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="121,42"
-          Id="Package\Ship -&gt; ODS\Union All"
-          TopLeft="257,413.5" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Ship -&gt; ODS\OLE DB Command 1"
-          TopLeft="379,209.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Ship -&gt; ODS\Derived Column 1"
-          TopLeft="236,515.5" />
-        <NodeLayout
           Size="209,42"
           Id="Package\Ship -&gt; ODS\Slowly Changing Dimension"
           TopLeft="213,107.5" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Ship -&gt; ODS\OLE DB Command"
-          TopLeft="90.5000000000001,311.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Ship -&gt; ODS\Insert Destination"
-          TopLeft="236,617.5" />
-        <NodeLayout
           Size="182,42"
           Id="Package\Ship -&gt; ODS\Extract Ship from PSA"
           TopLeft="226.5,5.5" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Ship -&gt; ODS\Derived Column"
-          TopLeft="102.5,209.5" />
-        <EdgeLayout
-          Id="Package\Ship -&gt; ODS.Paths[Union All Output 1]"
-          TopLeft="317.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Ship -&gt; ODS.Paths[OLE DB Source Output]"
           TopLeft="317.5,47.5">
@@ -10620,47 +9437,79 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Ship -&gt; ODS\Derived Column"
+          TopLeft="102.5,209.5" />
         <EdgeLayout
-          Id="Package\Ship -&gt; ODS.Paths[OLE DB Command Output]"
-          TopLeft="173.5,353.5">
+          Id="Package\Ship -&gt; ODS.Paths[Historical Attribute Inserts Output]"
+          TopLeft="267.25,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="-87.75,60"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="-87.75,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,16.503937007874" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,16.503937007874"
+                    Point2="0,20.503937007874"
+                    Point3="-4,20.503937007874" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="-83.75,20.503937007874" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="-83.75,20.503937007874"
+                    Point2="-87.75,20.503937007874"
+                    Point3="-87.75,24.503937007874" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="-87.75,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-118.93138671875,25.503937007874,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Ship -&gt; ODS\OLE DB Command"
+          TopLeft="90.5000000000001,311.5" />
+        <EdgeLayout
+          Id="Package\Ship -&gt; ODS.Paths[Derived Column Output]"
+          TopLeft="176.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Ship -&gt; ODS\Union All"
+          TopLeft="257,413.5" />
         <EdgeLayout
           Id="Package\Ship -&gt; ODS.Paths[New Output]"
           TopLeft="317.5,149.5">
@@ -10698,41 +9547,69 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Ship -&gt; ODS.Paths[Historical Attribute Inserts Output]"
-          TopLeft="267.25,149.5">
+          Id="Package\Ship -&gt; ODS.Paths[OLE DB Command Output]"
+          TopLeft="173.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-87.75,60"
+              EndConnector="125.166666666667,60"
               Start="0,0"
-              End="-87.75,52.5">
+              End="125.166666666667,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.503937007874" />
+                    End="0,31.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.503937007874"
-                    Point2="0,20.503937007874"
-                    Point3="-4,20.503937007874" />
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
                   <mssgle:LineSegment
-                    End="-83.75,20.503937007874" />
+                    End="121.166666666667,35.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="-83.75,20.503937007874"
-                    Point2="-87.75,20.503937007874"
-                    Point3="-87.75,24.503937007874" />
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
                   <mssgle:LineSegment
-                    End="-87.75,52.5" />
+                    End="125.166666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-118.93138671875,25.503937007874,150.1127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Ship -&gt; ODS\Derived Column 1"
+          TopLeft="236,515.5" />
+        <EdgeLayout
+          Id="Package\Ship -&gt; ODS.Paths[Union All Output 1]"
+          TopLeft="317.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Ship -&gt; ODS\Insert Destination"
+          TopLeft="236,617.5" />
         <EdgeLayout
           Id="Package\Ship -&gt; ODS.Paths[Derived Column Output1]"
           TopLeft="317.5,557.5">
@@ -10752,35 +9629,13 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Ship -&gt; ODS.Paths[Derived Column Output]"
-          TopLeft="176.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Ship -&gt; ODS\OLE DB Command 1"
+          TopLeft="379,209.5" />
         <EdgeLayout
           Id="Package\Ship -&gt; ODS.Paths[Changing Attribute Updates Output]"
           TopLeft="367.75,149.5">
@@ -10899,217 +9754,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Ship -&gt; ODS\Extract Ship from PSA">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Voyage -&gt; ODS">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Voyage -&gt; ODS\OLE DB Command"
-          TopLeft="229,209.5" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Voyage -&gt; ODS\Slowly Changing Dimension"
-          TopLeft="207.5,107.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Voyage -&gt; ODS\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Voyage -&gt; ODS\Extract Voyage from PSA"
-          TopLeft="213.5,5.5" />
-        <EdgeLayout
-          Id="Package\Voyage -&gt; ODS.Paths[New Output]"
-          TopLeft="278.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-191.5,60"
-              Start="0,0"
-              End="-191.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-187.5,24.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-187.5,24.2735042735043"
-                    Point2="-191.5,24.2735042735043"
-                    Point3="-191.5,28.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-191.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-122.84138671875,29.2735042735043,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Voyage -&gt; ODS.Paths[Changing Attribute Updates Output]"
-          TopLeft="345.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-33.5,60"
-              Start="0,0"
-              End="-33.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-29.5,24.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-29.5,24.2735042735043"
-                    Point2="-33.5,24.2735042735043"
-                    Point3="-33.5,28.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-33.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-95.28390625,29.2735042735043,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Voyage -&gt; ODS.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Voyage -&gt; ODS\Slowly Changing Dimension">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{D4499C09-FB49-4941-86B1-AFBB4E737367}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dbo].[Voyage]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DateDepartVoyage&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[DateDepartVoyage_Key]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DateDepartVoyage_Key&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[Id]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Id&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;PortIdEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[PortIdStart]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;PortIdStart&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Extract Voyage from PSA.Outputs[OLE DB Source Output].Columns[ShipId]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;ShipId&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
-  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Voyage -&gt; ODS\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Voyage -&gt; ODS\Extract Voyage from PSA">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
