@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{1E8E4593-34FB-41EC-9177-EDF787DAA647}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{ADFC6EE6-A0D8-48D3-BCFA-E0394AE260F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -129,13 +129,17 @@
           Id="Package\1)  Files to Staging Area"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="190,42"
+          Size="192,42"
           Id="Package\2)  Staging Area to PSA"
-          TopLeft="6.50000000000001,107.5" />
+          TopLeft="5.5,107.5" />
         <NodeLayout
-          Size="189,42"
+          Size="192,42"
           Id="Package\3)  PSA Dim to ODS"
-          TopLeft="7.00000000000003,209.5" />
+          TopLeft="5.5,209.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\4) PSA Facts to ODS"
+          TopLeft="5.5,311.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="101.5,47.5">
@@ -180,10 +184,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\4) PSA Facts to ODS"
-          TopLeft="14,311.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="101.5,251.5">

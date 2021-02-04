@@ -8,17 +8,17 @@
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>1. Files to Staging Area.dtsx</Name>
-      <LastWriteTime>2021-02-01T11:52:22.0241992Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T14:30:24.6950704Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>2. Staging Area to PSA.dtsx</Name>
-      <LastWriteTime>2021-01-31T17:35:31.1080643Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T15:56:47.3105727Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>3. PSA Dim to ODS.dtsx</Name>
-      <LastWriteTime>2021-02-01T12:36:32.5547413Z</LastWriteTime>
+      <LastWriteTime>2021-02-02T18:08:08.1051048Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -28,7 +28,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>4. PSA Facts to ODS.dtsx</Name>
-      <LastWriteTime>2021-02-01T12:50:10.6516312Z</LastWriteTime>
+      <LastWriteTime>2021-02-01T12:52:46.368336Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="134"
-  DTS:VersionGUID="{AE465C64-8DB1-4B49-A6B9-96D81C3744CD}">
+  DTS:VersionBuild="135"
+  DTS:VersionGUID="{48311B45-8ED2-4598-918E-115A41ABC5DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5663,6 +5663,18 @@ where [refTable].[Id] = ?</property>
           Size="221,42"
           Id="Package\Empty Persistent Staging Area"
           TopLeft="288,110" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Shipment -&gt; PSA"
+          TopLeft="285,390" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Voyage -&gt; PSA"
+          TopLeft="283,294" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\VoyagePort -&gt; PSA"
+          TopLeft="282,483" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="396.75,152">
@@ -5685,21 +5697,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="3. Prepare Database"
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="135,40"
-          Id="3f313ff3-292b-45c9-be72-306113b31b56"
-          TopLeft="50,112" />
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Shipment -&gt; PSA"
-          TopLeft="285,390" />
-        <NodeLayout
-          Size="226,42"
-          Id="Package\Voyage -&gt; PSA"
-          TopLeft="283,294" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="395.5,244">
@@ -5744,10 +5741,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="223,42"
-          Id="Package\VoyagePort -&gt; PSA"
-          TopLeft="282,483" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="394.75,432">
@@ -5771,6 +5764,13 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
+          Text="3. Prepare Database"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="135,40"
+          Id="3f313ff3-292b-45c9-be72-306113b31b56"
+          TopLeft="50,112" />
+        <AnnotationLayout
           Text="4. Staging Area -&gt; PSA"
           ParentId="Package"
           FontInfo="{assembly:Null}"
@@ -5790,21 +5790,17 @@ where [refTable].[Id] = ?</property>
           Id="Package\Children -&gt; PSA\Laad data naar Item PSA"
           TopLeft="1130,200.5" />
         <NodeLayout
-          Size="220,42"
-          Id="Package\Children -&gt; PSA\Laad data vanuit Ship Staging"
-          TopLeft="643,8" />
-        <NodeLayout
           Size="216,42"
           Id="Package\Children -&gt; PSA\Add Extraction Date 3"
           TopLeft="885.888888888889,107.5" />
         <NodeLayout
-          Size="246,42"
-          Id="Package\Children -&gt; PSA\Laad data vanuit Consigner Staging"
-          TopLeft="109,10" />
+          Size="222,42"
+          Id="Package\Children -&gt; PSA\Laad data vanuit Item Staging"
+          TopLeft="1128,9" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\Children -&gt; PSA\Laad data vanuit Container Staging"
-          TopLeft="378,9" />
+          Size="211,42"
+          Id="Package\Children -&gt; PSA\Laad data naar Port PSA"
+          TopLeft="888,200.5" />
         <NodeLayout
           Size="220,42"
           Id="Package\Children -&gt; PSA\Laad data naar Ship PSA"
@@ -5814,13 +5810,13 @@ where [refTable].[Id] = ?</property>
           Id="Package\Children -&gt; PSA\Add Extraction Date 2"
           TopLeft="648.333333333333,111.833333333333" />
         <NodeLayout
-          Size="211,42"
-          Id="Package\Children -&gt; PSA\Laad data naar Port PSA"
-          TopLeft="888,200.5" />
+          Size="246,42"
+          Id="Package\Children -&gt; PSA\Laad data vanuit Consigner Staging"
+          TopLeft="109,10" />
         <NodeLayout
           Size="234,42"
-          Id="Package\Children -&gt; PSA\Add Extraction Date 1"
-          TopLeft="378.888888888889,113.333333333333" />
+          Id="Package\Children -&gt; PSA\Laad data vanuit Container Staging"
+          TopLeft="378,9" />
         <NodeLayout
           Size="241,42"
           Id="Package\Children -&gt; PSA\Laad data naar Container PSA"
@@ -5830,13 +5826,17 @@ where [refTable].[Id] = ?</property>
           Id="Package\Children -&gt; PSA\Laad data naar Consigner PSA"
           TopLeft="101.111111111111,204.444444444444" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Children -&gt; PSA\Laad data vanuit Item Staging"
-          TopLeft="1128,9" />
-        <NodeLayout
           Size="219,42"
           Id="Package\Children -&gt; PSA\Laad data vanuit Port Staging"
           TopLeft="885,8" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Children -&gt; PSA\Add Extraction Date 1"
+          TopLeft="378.888888888889,113.333333333333" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Children -&gt; PSA\Laad data vanuit Ship Staging"
+          TopLeft="643,8" />
         <NodeLayout
           Size="245,42"
           Id="Package\Children -&gt; PSA\Add Extraction Date"
@@ -5845,6 +5845,50 @@ where [refTable].[Id] = ?</property>
           Size="221,42"
           Id="Package\Children -&gt; PSA\Add Extraction Date 4"
           TopLeft="1128.33333333333,105.388888888889" />
+        <EdgeLayout
+          Id="Package\Children -&gt; PSA.Paths[Derived Column Output1]"
+          TopLeft="496.194444444445,155.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.166666666667"
+              Start="0,0"
+              End="0,38.666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Children -&gt; PSA.Paths[Derived Column Output]"
+          TopLeft="229.194444444445,150.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.5555555555556"
+              Start="0,0"
+              End="0,46.0555555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.0555555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Children -&gt; PSA.Paths[OLE DB Source Output4]"
           TopLeft="1238.91666666667,51">
@@ -6021,50 +6065,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Children -&gt; PSA.Paths[Derived Column Output1]"
-          TopLeft="496.194444444445,155.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.166666666667"
-              Start="0,0"
-              End="0,38.666666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Children -&gt; PSA.Paths[Derived Column Output]"
-          TopLeft="229.194444444445,150.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.5555555555556"
-              Start="0,0"
-              End="0,46.0555555555556">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.0555555555556" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <AnnotationLayout
           Text="Extract"
           ParentId="Package\Children -&gt; PSA"
@@ -6103,7 +6103,7 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Children -&gt; PSA\Laad data naar Ship PSA">
+    design-time-name="Package\Children -&gt; PSA\Laad data naar Port PSA">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6116,7 +6116,7 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Children -&gt; PSA\Laad data naar Port PSA">
+    design-time-name="Package\Children -&gt; PSA\Laad data naar Ship PSA">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6160,21 +6160,21 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="245,42"
-          Id="Package\Shipment -&gt; PSA\Laad Data vanuit Shipment Staging"
-          TopLeft="62.6666666666699,60" />
+          Size="219,42"
+          Id="Package\Shipment -&gt; PSA\Laad data naar Shipment PSA"
+          TopLeft="71.55555555556,347.611111111111" />
         <NodeLayout
           Size="245,42"
           Id="Package\Shipment -&gt; PSA\Add Extraction Date 5"
           TopLeft="60,155.5" />
         <NodeLayout
+          Size="245,42"
+          Id="Package\Shipment -&gt; PSA\Laad Data vanuit Shipment Staging"
+          TopLeft="62.6666666666699,60" />
+        <NodeLayout
           Size="235,42"
           Id="Package\Shipment -&gt; PSA\Lookup ShipmentDetails"
           TopLeft="66.55555555556,249.111111111111" />
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Shipment -&gt; PSA\Laad data naar Shipment PSA"
-          TopLeft="71.55555555556,347.611111111111" />
         <EdgeLayout
           Id="Package\Shipment -&gt; PSA.Paths[OLE DB Source Output]"
           TopLeft="183.833333333335,102">
@@ -6189,28 +6189,6 @@ where [refTable].[Id] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,46.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Shipment -&gt; PSA.Paths[Derived Column Output]"
-          TopLeft="183.27777777778,197.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.611111111111"
-              Start="0,0"
-              End="0,44.111111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.111111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6243,6 +6221,28 @@ where [refTable].[Id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Shipment -&gt; PSA.Paths[Derived Column Output]"
+          TopLeft="183.27777777778,197.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.611111111111"
+              Start="0,0"
+              End="0,44.111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -6251,10 +6251,6 @@ where [refTable].[Id] = ?</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="241,42"
-          Id="Package\Voyage -&gt; PSA\Laad data vanuit Voyage Staging"
-          TopLeft="64.2222222222219,60" />
         <NodeLayout
           Size="247,42"
           Id="Package\Voyage -&gt; PSA\Laad data naar Voyage PSA"
@@ -6267,6 +6263,32 @@ where [refTable].[Id] = ?</property>
           Size="245,42"
           Id="Package\Voyage -&gt; PSA\Add Extraction Date 8"
           TopLeft="61.2222222222219,156.666666666667" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Voyage -&gt; PSA\Laad data vanuit Voyage Staging"
+          TopLeft="64.2222222222219,60" />
+        <EdgeLayout
+          Id="Package\Voyage -&gt; PSA.Paths[Derived Column Output]"
+          TopLeft="185.111111111111,198.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.5"
+              Start="0,0"
+              End="0,40">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Voyage -&gt; PSA.Paths[OLE DB Source Output]"
           TopLeft="184.222222222222,102">
@@ -6313,28 +6335,6 @@ where [refTable].[Id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Voyage -&gt; PSA.Paths[Derived Column Output]"
-          TopLeft="185.111111111111,198.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.5"
-              Start="0,0"
-              End="0,40">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -6344,60 +6344,49 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="229,42"
-          Id="Package\VoyagePort -&gt; PSA\Add Extraction Date 6"
-          TopLeft="162.222222222222,158.638888888889" />
+          Size="230,42"
+          Id="Package\VoyagePort -&gt; PSA\Lookup Previous_LegDateArrival"
+          TopLeft="168,457" />
         <NodeLayout
-          Size="253,42"
-          Id="Package\VoyagePort -&gt; PSA\Laad data vanuit VoyagePort Staging"
-          TopLeft="155.555555555556,61.972222222222" />
-        <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[OLE DB Source Output]"
-          TopLeft="279.388888888889,103.972222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54.666666666667"
-              Start="0,0"
-              End="0,47.166666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.166666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Extract"
-          ParentId="Package\VoyagePort -&gt; PSA"
-          FontInfo="{assembly:Null}"
-          Size="65,40"
-          Id="645230b0-ea46-464d-a366-0f949a41ef91"
-          TopLeft="71.5,60" />
-        <AnnotationLayout
-          Text="Transform"
-          ParentId="Package\VoyagePort -&gt; PSA"
-          FontInfo="{assembly:Null}"
-          Size="82,40"
-          Id="4a8a4289-fac9-41cd-994e-dba2f605ead9"
-          TopLeft="60,159.5" />
-        <AnnotationLayout
-          Text="Load&#xA;"
-          ParentId="Package\VoyagePort -&gt; PSA"
-          FontInfo="{assembly:Null}"
-          Size="55,56"
-          Id="de54f4ee-d88c-4907-8591-bdc2e88a4e53"
-          TopLeft="70.25,460.75" />
+          Size="228,42"
+          Id="Package\VoyagePort -&gt; PSA\Laad data naar VoyagePort PSA"
+          TopLeft="65,680" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\VoyagePort -&gt; PSA\Calculate Idle Time"
+          TopLeft="98,575" />
         <NodeLayout
           Size="226,42"
           Id="Package\VoyagePort -&gt; PSA\Lookup Voyage"
           TopLeft="163,279" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\VoyagePort -&gt; PSA\Lookup DateDepartVoyage_Key"
+          TopLeft="569,459" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\VoyagePort -&gt; PSA\Lookup LegDateDepart_Key"
+          TopLeft="565,285.75" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\VoyagePort -&gt; PSA\Laad data vanuit VoyagePort Staging"
+          TopLeft="155.555555555556,61.972222222222" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\VoyagePort -&gt; PSA\Fill 0 Idle time"
+          TopLeft="310,577" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\VoyagePort -&gt; PSA\OLE DB Destination"
+          TopLeft="307,680" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\VoyagePort -&gt; PSA\Add Extraction Date 6"
+          TopLeft="162.222222222222,158.638888888889" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\VoyagePort -&gt; PSA\Lookup LegDateArrival_Key"
+          TopLeft="568,375.75" />
         <EdgeLayout
           Id="Package\VoyagePort -&gt; PSA.Paths[Derived Column Output]"
           TopLeft="276.361111111111,200.638888888889">
@@ -6420,160 +6409,26 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="210,42"
-          Id="Package\VoyagePort -&gt; PSA\Lookup LegDateDepart_Key"
-          TopLeft="565,285.75" />
         <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output]"
-          TopLeft="389,303.375">
+          Id="Package\VoyagePort -&gt; PSA.Paths[OLE DB Source Output]"
+          TopLeft="279.388888888889,103.972222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="176,0"
+              EndConnector="0,54.666666666667"
               Start="0,0"
-              End="168.5,0">
+              End="0,47.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="168.5,0" />
+                    End="0,47.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="36.05861328125,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="208,42"
-          Id="Package\VoyagePort -&gt; PSA\Lookup LegDateArrival_Key"
-          TopLeft="568,375.75" />
-        <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output1]"
-          TopLeft="671,327.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="208,42"
-          Id="Package\VoyagePort -&gt; PSA\Lookup DateDepartVoyage_Key"
-          TopLeft="569,459" />
-        <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output2]"
-          TopLeft="672.5,417.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.25"
-              Start="0,0"
-              End="0,33.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.0703125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\VoyagePort -&gt; PSA\Lookup Previous_LegDateArrival"
-          TopLeft="168,457" />
-        <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output3]"
-          TopLeft="569,479">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-171,0"
-              Start="0,0"
-              End="-163.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-163.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-129.94138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\VoyagePort -&gt; PSA\Calculate Idle Time"
-          TopLeft="98,575" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\VoyagePort -&gt; PSA\Fill 0 Idle time"
-          TopLeft="310,577" />
-        <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output4]"
-          TopLeft="246,499">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-63.5,76"
-              Start="0,0"
-              End="-63.5,68.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.7150259067358" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.7150259067358"
-                    Point2="0,30.7150259067358"
-                    Point3="-4,30.7150259067358" />
-                  <mssgle:LineSegment
-                    End="-59.5,30.7150259067358" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-59.5,30.7150259067358"
-                    Point2="-63.5,30.7150259067358"
-                    Point3="-63.5,34.7150259067358" />
-                  <mssgle:LineSegment
-                    End="-63.5,68.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-79.94138671875,35.7150259067358,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6612,36 +6467,138 @@ where [refTable].[Id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\VoyagePort -&gt; PSA\Laad data naar VoyagePort PSA"
-          TopLeft="65,680" />
         <EdgeLayout
-          Id="Package\VoyagePort -&gt; PSA.Paths[Derived Column Output1]"
-          TopLeft="180.75,617">
+          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output4]"
+          TopLeft="246,499">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63"
+              EndConnector="-63.5,76"
               Start="0,0"
-              End="0,55.5">
+              End="-63.5,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,26.7150259067358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7150259067358"
+                    Point2="0,30.7150259067358"
+                    Point3="-4,30.7150259067358" />
+                  <mssgle:LineSegment
+                    End="-59.5,30.7150259067358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59.5,30.7150259067358"
+                    Point2="-63.5,30.7150259067358"
+                    Point3="-63.5,34.7150259067358" />
+                  <mssgle:LineSegment
+                    End="-63.5,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-79.94138671875,35.7150259067358,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\VoyagePort -&gt; PSA\OLE DB Destination"
-          TopLeft="307,680" />
+        <EdgeLayout
+          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output3]"
+          TopLeft="569,479">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-171,0"
+              Start="0,0"
+              End="-163.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-163.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-129.94138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output2]"
+          TopLeft="672.5,417.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.25"
+              Start="0,0"
+              End="0,33.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.0703125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output1]"
+          TopLeft="671,327.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\VoyagePort -&gt; PSA.Paths[Lookup Match Output]"
+          TopLeft="389,303.375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176,0"
+              Start="0,0"
+              End="168.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="168.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="36.05861328125,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\VoyagePort -&gt; PSA.Paths[Derived Column Output2]"
           TopLeft="393.75,619">
@@ -6664,11 +6621,77 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\VoyagePort -&gt; PSA.Paths[Derived Column Output1]"
+          TopLeft="180.75,617">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Extract"
+          ParentId="Package\VoyagePort -&gt; PSA"
+          FontInfo="{assembly:Null}"
+          Size="65,40"
+          Id="645230b0-ea46-464d-a366-0f949a41ef91"
+          TopLeft="71.5,60" />
+        <AnnotationLayout
+          Text="Transform"
+          ParentId="Package\VoyagePort -&gt; PSA"
+          FontInfo="{assembly:Null}"
+          Size="82,40"
+          Id="4a8a4289-fac9-41cd-994e-dba2f605ead9"
+          TopLeft="60,159.5" />
+        <AnnotationLayout
+          Text="Load&#xA;"
+          ParentId="Package\VoyagePort -&gt; PSA"
+          FontInfo="{assembly:Null}"
+          Size="55,56"
+          Id="de54f4ee-d88c-4907-8591-bdc2e88a4e53"
+          TopLeft="70.25,460.75" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\VoyagePort -&gt; PSA\Laad data vanuit VoyagePort Staging">
+    design-time-name="Package\VoyagePort -&gt; PSA\Lookup Previous_LegDateArrival">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[VoyagePort]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\VoyagePort -&gt; PSA\Laad data naar VoyagePort PSA">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6686,7 +6709,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6696,53 +6719,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\VoyagePort -&gt; PSA\Lookup LegDateDepart_Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Date]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\VoyagePort -&gt; PSA\Lookup LegDateArrival_Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Date]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6755,7 +6732,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6765,7 +6742,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6773,22 +6750,22 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\VoyagePort -&gt; PSA\Lookup Previous_LegDateArrival">
+    design-time-name="Package\VoyagePort -&gt; PSA\Lookup LegDateDepart_Key">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[VoyagePort]</Value>
+          type="q3:string">[dbo].[Date]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6796,7 +6773,7 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\VoyagePort -&gt; PSA\Laad data naar VoyagePort PSA">
+    design-time-name="Package\VoyagePort -&gt; PSA\Laad data vanuit VoyagePort Staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6818,6 +6795,29 @@ where [refTable].[Id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\VoyagePort -&gt; PSA\Lookup LegDateArrival_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
